@@ -1,0 +1,69 @@
+#menu{  height:40px;
+        width:100%;
+        padding-top:20px;
+		float:left;
+		background-color: White;
+		border-top:solid 5px DimGrey;
+		border-bottom:solid 5px DimGrey;}
+
+#add_new{text-align:left;
+padding-left:30%;}
+
+a:hover{background-color:LightGrey;
+		color:white;
+		padding:10px;
+		border:solid 2px DimGrey;
+		cursor: pointer;}
+
+
+a{background-color:White;
+		color:DimGrey;
+		padding:10px;
+		border:solid 2px DimGrey;}
+
+a:visited{color:LightGrey;}
+
+#page { border:solid 10px DimGrey;
+		float:left;
+		width:80%;
+		background-color: White;}
+
+#footer{color:white;
+		clear:both;
+		text-align:center;
+		background-image: url("https://gebyyblog.files.wordpress.com/2016/10/img.jpg");
+		border-top:solid 5px DimGrey}
+
+#logoutButton {display:none;}
+
+header{
+		 height: 100px;
+		 background-image: url("https://gebyyblog.files.wordpress.com/2016/10/img.jpg");
+		 text-align:center;
+		 color: White;
+		 padding:30px;}
+
+body {	background-image: url("http://www.ljpp.com.cn/upload/201705/29/201705291142462803.jpg");
+		width:1220px;
+		font-size:14pt;
+		padding: 20px 0px 0px 120px;
+		text-align:center;}
+
+nav { border: solid 10px DimGrey;
+	  color: DimGrey;
+	  background-color: White;}
+
+form { padding-bottom:40px;}
+
+th{ border: solid 2px DimGrey;
+	padding:10px;
+	background-color:lightGrey;}
+
+td{border: solid 2px DimGrey;
+	padding:10px;}
+
+table{margin-left:auto;
+	  margin-right:auto;}
+
+.flash{ background: LightGrey;
+        padding: 5px;}

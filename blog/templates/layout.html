@@ -1,0 +1,27 @@
+<!doctype html>
+<title>My Blogging Site</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div id="page">
+  <header> <h1>Moje podróże</h1></header>
+  <div id="menu">
+  <a href="{{ url_for('index') }}">Start</a>
+  {% if not session.username %}
+    <a href="{{ url_for('register') }}">Rejestracja</a>
+    <a href="{{ url_for('login') }}">Logowanie</a>
+  {% else %}
+    <a href="{{ url_for('profile', username=session.username) }}">Miejsca</a>
+    <a href="{{ url_for('logout') }}">Wyloguj</a>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% if session.username %}
+  <br>Witaj {{ session.username }}
+  {% endif %}
+  {% block body %}{% endblock %}
+  <div id="footer">
+   Kamil Kucharski<br>
+   <b>v1.0</b>
+ </div>
+</div>
