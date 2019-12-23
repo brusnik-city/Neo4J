@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+     <form action="{{ url_for('search_places') }}" method="post">
+         <p>Znajdź osoby
+             <select name="usertype">
+                 <option value="Odwiedza"> planujące odwiedzić </option>
+                 <option value="Odwiedzili"> które odwiedziły </option>
+             </select>
+              miejscowość
+             </p>
+         <select name="place">
+           {% for row in places %}
+           <option value={{ row.p.name }}>{{ row.p.name }}</option>
+           {% endfor %}
+         </select>
+         <input class="prz" type="submit" value="Szukaj">
+
+     </form>
+      <p/>
+      {% if users %}
+      <p class="results">{{ usertype }} miejscowość {{ place }}:</p>
+        <p class="label"></p>
+            {% for row in users %}
+            <p><strong> {{ row.u.username }},</strong> przez {{ row.v.days }} dni</p>
+            {% endfor %}
+      {% endif %}
+{% endblock %}

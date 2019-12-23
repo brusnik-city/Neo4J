@@ -1,5 +1,5 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
-from .models import User, all_places
+from .models import User, all_places, get_places, visited, will_visit, get_users, will_visit_places, visited_places
 
 app = Flask(__name__)
 
@@ -67,16 +67,51 @@ def add_place():
     return redirect(url_for("index"))
 
 
-@app.route("/like_post/<post_id>")
-def like_post(post_id):
-    return "TODO"
+@app.route("/search_places", methods=["GET", "POST"])
+def search_places():
+    places = get_places()
+    usertype = request.form.get("usertype")
+    place = request.form.get("place")
+    users = ""
+    if places and usertype:
+        if usertype == "Odwiedza":
+            users = will_visit(place)
+        if usertype == "Odwiedzili":
+            users = visited(place)
 
+    if users != "":
+        return render_template("search_places.html", places=places, users=users, usertype=usertype, place=place)
+    else:
+        return render_template("search_places.html", places=places)
+
+@app.route("/search_users", methods=["GET", "POST"])
+def search_users():
+    users = get_users()
+    type = request.form.get("type")
+    user = request.form.get("user")
+    places = ""
+    if users and type:
+        if type == "Odwiedzi":
+            places = will_visit_places(user)
+        if type == "Odwiedzil":
+            places = visited_places(user)
+
+    if places != "":
+        return render_template("search_users.html", users=users, places=places, type=type, user=user)
+    else:
+        return render_template("search_users.html", users=users)
 
 @app.route("/profile/<username>")
-def profile(username):
-    return "TODO"
+def yourplaces(username):
+    user = User(username)
+    visited = user.visited_by_me()
+    will_visit = user.to_visit_by_me()
+
+    return render_template("yourplaces.html", username=username, visited=visited, will_visit=will_visit)
 
 
 @app.route("/logout")
 def logout():
-    return "TODO"
+    session.pop("username")
+    flash("Wylogowano.")
+    return redirect(url_for("index"))

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="content">
+
+{% if session.username %}
+    {% if session.username == username %}
+        <h3>Miejsca, które już odwiedziłeś</h3>
+        {% for row in visited %}
+            <p>W miejscowości {{ row.p.name }} przebywałeś {{row.v.days}} dni</p>
+        {% endfor %}<br>
+        <h3>Miejsca, które planujesz odwiedzić</h3>
+        {% for row in will_visit %}
+            <p>W miejscowości {{ row.p.name }} planujesz spędzić {{row.v.days}} dni</p></p>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+    </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 <!doctype html>
-<title>My Blogging Site</title>
+<title>Moje podróże</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <div id="page">
   <header> <h1>Moje podróże</h1></header>
@@ -9,7 +9,9 @@
     <a href="{{ url_for('register') }}">Rejestracja</a>
     <a href="{{ url_for('login') }}">Logowanie</a>
   {% else %}
-    <a href="{{ url_for('profile', username=session.username) }}">Miejsca</a>
+    <a href="{{ url_for('yourplaces', username=session.username) }}">Twoje miejsca</a>
+    <a href="{{ url_for('search_places') }}">Wyszukaj użytkowników</a>
+    <a href="{{ url_for('search_users') }}">Wyszukaj miejscowości</a>
     <a href="{{ url_for('logout') }}">Wyloguj</a>
   {% endif %}
   </div>
@@ -17,7 +19,7 @@
     <div class="flash">{{ message }}</div>
   {% endfor %}
   {% if session.username %}
-  <br>Witaj {{ session.username }}
+  <br><h2>Witaj {{ session.username }}</h2>
   {% endif %}
   {% block body %}{% endblock %}
   <div id="footer">
