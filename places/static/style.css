@@ -21,7 +21,7 @@ a{background-color:White;
 		padding:10px;
 		border:solid 2px DimGrey;}
 
-a:visited{color:LightGrey;}
+a:visited{color:DimGrey;}
 
 #page { border:solid 10px DimGrey;
 		float:left;
